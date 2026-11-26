@@ -28,3 +28,15 @@ Repository individu Tugas Besar mata kuliah **Pengembangan Aplikasi Website (PAW
    ```bash
    git clone [https://github.com/najwanars/PAW_49-08_KatalogFarmasi_Najwan.git](https://github.com/najwanars/PAW_49-08_KatalogFarmasi_Najwan.git)
    cd PAW_49-08_KatalogFarmasi_Najwan
+   ```
+2. Install dependensi:
+   ```bash
+   composer install
+   ```
+3. Salin `.env.example` menjadi `.env`, buat database kosong bernama `db_klinik` di phpMyAdmin, lalu jalankan:
+   ```bash
+   php artisan key:generate
+   php artisan migrate:fresh --seed
+   php artisan serve
+   ```
+4. Akses aplikasi di `http://127.0.0.1:8000`.
