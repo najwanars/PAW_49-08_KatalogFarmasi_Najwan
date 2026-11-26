@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Sistem Informasi Klinik Rawat Jalan')</title>
+    <title>@yield('title', 'Katalog Farmasi - Sistem Informasi Klinik')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{{ route('dashboard') }}">Klinik Rawat Jalan</a>
+            <a class="navbar-brand fw-bold" href="{{ route('dashboard') }}">Klinik Farmasi</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,25 +19,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                         </li>
-                        {{-- Menu Modul A (Pasien) --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/pasiens') }}">Pasien</a>
+                            <a class="nav-link" href="{{ route('obats.index') }}">Katalog Obat</a>
                         </li>
-                        {{-- Menu Modul B (Dokter) --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/dokters') }}">Dokter</a>
-                        </li>
-                        {{-- Menu Modul C (Katalog Farmasi) --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/obats') }}">Farmasi</a>
-                        </li>
-                        {{-- Menu Modul D (Ruang Poliklinik) --}}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/polikliniks') }}">Poliklinik</a>
-                        </li>
+                        @if (auth()->user()->isAdmin())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('obats.create') }}">Tambah Obat</a>
+                            </li>
+                        @endif
                     @endauth
                 </ul>
-
                 <ul class="navbar-nav ms-auto align-items-center">
                     @auth
                         <li class="nav-item me-3 text-white small">
@@ -74,7 +64,7 @@
 
     <footer class="bg-dark text-white text-center py-3 mt-auto">
         <div class="container">
-            <p class="mb-0">&copy; 2026 Sistem Informasi Klinik Rawat Jalan</p>
+            <p class="mb-0">&copy; 2026 Modul Katalog Farmasi - Sistem Informasi Klinik Rawat Jalan</p>
         </div>
     </footer>
 
